@@ -1,0 +1,43 @@
+### recuperar todas las peliculas
+get http://localhost:3000/movies
+
+### Recuperar peliculas por id, mal
+get http://localhost:3000/movies/Titanic
+
+### Recuperar pelicula por id , bien
+GET http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+
+### Recuperar pelicula por id, en mysql
+GET http://localhost:3000/movies/B6593A3-E5C6-011E-E8C0-3309C236AA5A4
+
+### Recuperar todas las peliculas por un genero
+get http://localhost:3000/movies?genre=action
+
+### crear una pelicula con POST
+POST http://localhost:3000/movies
+content-type: application/json
+
+{  
+	"gato": "negro",
+  "title": "The Godfather",
+  "year": 1975,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": [
+    "Crime",
+    "Drama"
+  ],
+	"rate": 9
+}
+
+### Eliminar una pelicula
+DELETE http://localhost:3000/movies/DA0F75A-75DD-411E-E923-5309C236AA5A4
+
+### actualizar una pelicula
+PATCH http://localhost:3000/movies/F2ED4F5-15DD-711E-E923-5309C236AA5A4
+Content-Type: application/json
+
+{
+	"year" : 1991
+}
