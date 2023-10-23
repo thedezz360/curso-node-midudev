@@ -46,8 +46,17 @@ io.on("connection", (socket)=> {
 			return;
 		}
 		// hacemos de bradcast, emitimos el mensaje a todos los users
-		io.emit("chat message", msg, result.insertedId.toString());
+		io.emit("chat message", msg, result.insertedId);
 	});
+
+	// recupera los mensajes sin conexión
+	if(!socket.recovered){
+		try{
+			dbModel.recoveryDesconectionMessages() // -> vamos acá, hay que especificar el id del ultimo mensaje
+		}catch (e){	
+			console.error("Error al recuperar los mensajes: ", e);
+		}
+	}
 });
 
 // inivializamos logger
@@ -68,8 +77,7 @@ server.listen(port, ()=>{
 });
 
 
-// pruebo la conexion a la base de datos
-dbModel.testConnection();
+
 
 
 

@@ -13,3 +13,7 @@
 
 ### pendiente de implementar
 - si hay una desconexión todos los mensajes que no has recibido, se recuperan al recuperar la conexión
+
+- hay que guardar el timesta
+
+

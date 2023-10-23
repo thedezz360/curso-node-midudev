@@ -17,5 +17,5 @@ use("chatApp");
 // });
 
 db.getCollection("messages")
-	.insertOne({mensaje: "zapata"});
+	.find({mensaje: "zapata"});
 	

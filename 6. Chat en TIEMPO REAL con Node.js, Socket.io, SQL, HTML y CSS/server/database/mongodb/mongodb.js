@@ -44,11 +44,25 @@ export class dbModel {
 		console.log(input);
 		const db = await connect();
 
-		const resultado = await db.insertOne({content: input});
-		console.log({resultado});
+		const resultado = await db.insertOne({
+			content: input,
+			timeStamp: new Date()
+		});
 		
 		console.log("documento insertado con el id: " + resultado.insertedId );
 		return resultado;
+	}
+
+	static async recoveryDesconectionMessages({id}){
+		const db = await connect();
+
+		const result = await db.findOne({_id: id});
+
+		const results = await db.find({
+			timeStamp: { $gte: result.timeStamp }
+		}).toArray();
+
+		return results;
 	}
 
 	
